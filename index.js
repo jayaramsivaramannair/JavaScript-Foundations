@@ -17,7 +17,8 @@ let name = "Jayaram Nair";
 (2) Create another variable called `periods` and give it the value of years*12.
 */
 
-
+let monthlyInterestRate = interestRate / 12;
+let periods = years * 12;
 
 
 // 🏡 Task 2: Harder Math
@@ -37,6 +38,11 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 When your math is correct, monthlyRate will equal 1073.64
 */
 
+let n1 = Math.pow((1 + monthlyInterestRate), periods);
+let numerator = principal * n1 * monthlyInterestRate;
+let denominator = n1 - 1;
+let monthlyRate = numerator / denominator;
+console.log(monthlyRate);
 
 
 
