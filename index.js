@@ -98,7 +98,7 @@ Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by
 */
 function mortgageCalculator(P, I, N, creditScore) {
     let monthlyInterestRate = I / 12;
-    
+
     if (creditScore > 740) {
         monthlyInterestRate = monthlyInterestRate * 0.95;
     } else if (creditScore < 660) {
@@ -113,11 +113,12 @@ function mortgageCalculator(P, I, N, creditScore) {
 
     return monthlyRate;
 }
-console.log(mortgageCalculator(200000, 0.05, 30, 680));
+console.log(mortgageCalculator(200000, 0.05, 30, 600));
 
 
 // 🏡 Task 6: Loops
-/* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
+/* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, 
+except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
 
 For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
@@ -132,7 +133,26 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate(P, I, N) {
 
+    let lowerBoundInterestRate = I - 0.02;
+    let higherBoundInterestRate = I + 0.02;
+
+    while(lowerBoundInterestRate <= higherBoundInterestRate) {
+        let monthlyInterestRate = lowerBoundInterestRate / 12;
+        let periods = N * 12;
+
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let numerator = P * n1 * monthlyInterestRate;
+        let denominator = n1 - 1;
+        let monthlyRate = numerator / denominator;
+
+        console.log(`${name}, with an interest rate of ${lowerBoundInterestRate.toFixed(3)}, your monthly rate is $ ${Math.round(monthlyRate)}`);
+        lowerBoundInterestRate += 0.005;
+    }
+}
+
+variableInterestRate(200000, 0.04, 30);
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
