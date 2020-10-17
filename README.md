@@ -67,8 +67,8 @@ After you have completed the requirements, try any of the following challenges. 
 
 - [ ] Add  `Property Tax`, `Homeowner's insurance` and `HOA fees` as parameters in your function to calculate total monthly spending on housing
 - [ ] Build a calculator function that accepts `monthly payment` and `interest rate` and returns the maximum loan that a person could afford
-- [ ] Explore using `window.prompt()` to allow a user to input parameters in the browser
-- [ ] Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!)
+- [X] Explore using `window.prompt()` to allow a user to input parameters in the browser
+- [X] Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!)
 
 ## Submission format
 
