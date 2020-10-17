@@ -166,6 +166,21 @@ variableInterestRate(200000, 0.04, 30);
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+function mortgageCalculator() {
+    let interestRate = Number(prompt("Enter the interest rate (e.g. 0.05 for 5%): "));
+    let numberOfYears = Number(prompt("Enter Mortgage Term (in years): "));
+    let principal = Number(prompt("Enter the Loan Amount: "));
+    
+    let monthlyInterestRate = interestRate / 12;
+    let periods = numberOfYears * 12;
 
+    let n1 = Math.pow((1 + monthlyInterestRate), periods);
+    let numerator = principal * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    let monthlyRate = numerator / denominator;
+    return monthlyRate;
+}
+
+mortgageCalculator();
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
