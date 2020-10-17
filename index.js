@@ -96,8 +96,24 @@ and if credit score is anywhere between 660 and 740 interest rate doesn't change
 
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
+function mortgageCalculator(P, I, N, creditScore) {
+    let monthlyInterestRate = I / 12;
+    
+    if (creditScore > 740) {
+        monthlyInterestRate = monthlyInterestRate * 0.95;
+    } else if (creditScore < 660) {
+        monthlyInterestRate = monthlyInterestRate * 1.05;
+    }
 
+    let periods = N * 12;
+    let n1 = Math.pow((1 + monthlyInterestRate), periods);
+    let numerator = P * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    let monthlyRate = numerator / denominator;
 
+    return monthlyRate;
+}
+console.log(mortgageCalculator(200000, 0.05, 30, 680));
 
 
 // 🏡 Task 6: Loops
