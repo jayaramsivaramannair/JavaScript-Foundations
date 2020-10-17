@@ -133,7 +133,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-function variableInterestRate(P, I, N) {
+function variableInterestRate(P, I, N, creditScore) {
 
     let lowerBoundInterestRate = I - 0.02;
     let higherBoundInterestRate = I + 0.02;
@@ -141,6 +141,12 @@ function variableInterestRate(P, I, N) {
     while(lowerBoundInterestRate <= higherBoundInterestRate) {
         let monthlyInterestRate = lowerBoundInterestRate / 12;
         let periods = N * 12;
+
+        if (creditScore > 740) {
+            monthlyInterestRate = monthlyInterestRate * 0.95;
+        } else if (creditScore < 660) {
+            monthlyInterestRate = monthlyInterestRate * 1.05;
+        }
 
         let n1 = Math.pow((1 + monthlyInterestRate), periods);
         let numerator = P * n1 * monthlyInterestRate;
@@ -152,7 +158,7 @@ function variableInterestRate(P, I, N) {
     }
 }
 
-variableInterestRate(200000, 0.04, 30);
+variableInterestRate(200000, 0.04, 30, 780);
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
