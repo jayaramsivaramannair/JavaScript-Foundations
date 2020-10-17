@@ -166,6 +166,7 @@ variableInterestRate(200000, 0.04, 30);
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+
 function mortgageCalculator() {
     let interestRate = Number(prompt("Enter the interest rate (e.g. 0.05 for 5%): "));
     let numberOfYears = Number(prompt("Enter Mortgage Term (in years): "));
@@ -184,3 +185,18 @@ function mortgageCalculator() {
 mortgageCalculator();
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+function variableInterestRate(P, interestArray, N) {
+
+    for(let i = 0; i < interestArray.length; i++) {
+        let monthlyInterestRate = interestArray[i] / 12;
+        let periods = N * 12;
+
+        let n1 = Math.pow((1 + monthlyInterestRate), periods);
+        let numerator = P * n1 * monthlyInterestRate;
+        let denominator = n1 - 1;
+        let monthlyRate = numerator / denominator;
+
+        console.log(`${name}, with an interest rate of ${interestArray[i]}, your monthly rate is $ ${Math.round(monthlyRate)}`);
+    }
+}
+variableInterestRate(200000, [0.02, 0.03, 0.04, 0.05, 0.06], 30);
